@@ -264,17 +264,31 @@ var baseTree = [
             {label: 'Carto Positron', layer: Positron, name: 'Positron'},
         ]
     },
-    {
-        label: 'Collegiate Mission',
-        children: [
-            {label: 'Full Time', layer: collegiateFT},
-            {label: 'Part Time', layer: collegiatePT},
-            {label: 'NAV Associate', layer: collegiateNAV},
-        ]
-    },
 ];
+
+        var overlaysTree = {
+            label: 'Layers',
+            selectAllCheckbox: 'Un/select all',
+            children: [
+                {label: '<div id="onlysel">-Show only selected-</div>'},
+                {label: 'Collegiate', selectAllCheckbox: true, children: [
+					{label: 'Full Time', layer: collegiateFT},
+					{label: 'Part Time', layer: collegiatePT},
+					{label: 'NAV Associate', layer: collegiateNAV},
+                ]},
 // L.control.layers(baseMaps, featureLayers, { collapsed: false, position: 'topleft' }).addTo(map);
-L.control.layers.tree(baseTree,).addTo(map);
+        var lay = L.control.layers.tree(baseTree, overlaysTree,
+            {
+                namedToggle: true,
+                selectorBack: false,
+                closedSymbol: '&#8862; &#x1f5c0;',
+                openedSymbol: '&#8863; &#x1f5c1;',
+                collapseAll: 'Collapse all',
+                expandAll: 'Expand all',
+                collapsed: false,
+            });
+			
+			        lay.addTo(map).collapseTree().expandSelected().collapseTree(true);
 //Legend
 var breaks = [17, 14, 11, 8, 5, 3, 0];
 var labels = ['Legend', 'Collegiate Mission', 'D4L Mission', 'Encore Mission', 'ISM Mission', 'Military Mission', 'Nations Within Mission'];
