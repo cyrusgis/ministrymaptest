@@ -255,18 +255,9 @@ var overlaysTree = {
 				{label: 'NAV Associate', layer: collegiateNAV},
                 ]},
 // L.control.layers(baseMaps, featureLayers, { collapsed: false, position: 'topleft' }).addTo(map);
-        var lay = L.control.layers.tree(baseTree, overlaysTree,
-            {
-                namedToggle: true,
-                selectorBack: false,
-                closedSymbol: '&#8862; &#x1f5c0;',
-                openedSymbol: '&#8863; &#x1f5c1;',
-                collapseAll: 'Collapse all',
-                expandAll: 'Expand all',
-                collapsed: false,
-            });
-			
-			        lay.addTo(map).collapseTree().expandSelected().collapseTree(true);
+var lay = L.control.layers.tree(baseTree, overlaysTree)
+lay.addTo(map).collapseTree().expandSelected().collapseTree(true);
+
 //Legend
 var breaks = [17, 14, 11, 8, 5, 3, 0];
 var labels = ['Legend', 'Collegiate Mission', 'D4L Mission', 'Encore Mission', 'ISM Mission', 'Military Mission', 'Nations Within Mission'];
