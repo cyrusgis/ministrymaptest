@@ -100,28 +100,6 @@ var collegiatePT = L.geoJSON(collegiate, {
     }
   }).addTo(map);
 
-  var overlaysTree = {
-    label: 'Points of Interest',
-    selectAllCheckbox: 'Un/select all',
-    children: [
-        {
-            label: 'Europe',
-            selectAllCheckbox: true,
-            children: [
-                {
-                    label: 'France',
-                    selectAllCheckbox: true,
-                    children: [
-                        { label: 'Tour Eiffel', layer: collegiateFT },
-                        { label: 'Notre Dame', layer: collegiatePT },
-                        { label: 'Louvre', layer: collegiateNAV },
-                    ]
-                }
-            ]
-        }
-    ]
-}  
-
 var d4l = L.geoJSON(d4l, {
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, {
@@ -266,15 +244,15 @@ var baseTree = [
     },
 ];
 
-        var overlaysTree = {
-            label: 'Layers',
-            selectAllCheckbox: 'Un/select all',
-            children: [
-                {label: '<div id="onlysel">-Show only selected-</div>'},
-                {label: 'Collegiate', selectAllCheckbox: true, children: [
-					{label: 'Full Time', layer: collegiateFT},
-					{label: 'Part Time', layer: collegiatePT},
-					{label: 'NAV Associate', layer: collegiateNAV},
+var overlaysTree = {
+	label: 'Layers',
+	selectAllCheckbox: 'Un/select all',
+	children: [
+	{label: '<div id="onlysel">-Show only selected-</div>'},
+	{label: 'Collegiate', selectAllCheckbox: true, children: [
+				{label: 'Full Time', layer: collegiateFT},
+				{label: 'Part Time', layer: collegiatePT},
+				{label: 'NAV Associate', layer: collegiateNAV},
                 ]},
 // L.control.layers(baseMaps, featureLayers, { collapsed: false, position: 'topleft' }).addTo(map);
         var lay = L.control.layers.tree(baseTree, overlaysTree,
