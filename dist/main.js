@@ -255,7 +255,7 @@ var overlaysTree = {
 				{label: 'NAV Associate', layer: collegiateNAV},
                 ]},
 // L.control.layers(baseMaps, featureLayers, { collapsed: false, position: 'topleft' }).addTo(map);
-L.control.layers.tree(baseTree, overlaysTree).addTo(map);
+const layerControl = L.control.layers.tree(baseTree, overlaysTree, {position:'topleft'}).addTo(map);
 
 //Legend
 var breaks = [17, 14, 11, 8, 5, 3, 0];
